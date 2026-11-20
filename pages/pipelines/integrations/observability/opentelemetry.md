@@ -1,5 +1,5 @@
 ---
-keywords: OpenTelemetry, tracing, observability, Datadog, honeycomb, otlp
+keywords: OpenTelemetry, tracing, observability, Datadog, honeycomb, otlp, Axiom
 ---
 
 # OpenTelemetry
@@ -179,6 +179,21 @@ Each row displays the HTTP status code, request UUID, the exported span name (fo
 - **Response**: Shows the response headers and body. If the collector returns a protobuf response (for example, a `partialSuccess` with rejected spans and an error message), the body is decoded into readable JSON.
 
 If a request fails before it gets an HTTP response (for example, a connection timeout), the row shows `n/a` for the status code and no duration. Expanding the row still shows the **Request** tab as normal. The **Response** tab shows an **Error** message instead of response details.
+
+### Axiom
+
+Set the Endpoint to the base domain of your [Axiom edge deployment](https://axiom.co/docs/reference/edge-deployments), for example `https://us-east-1.aws.edge.axiom.co` or `https://eu-central-1.aws.edge.axiom.co`.
+
+Add the required headers:
+
+| Key               | Value                      |
+| ----------------- | -------------------------- |
+| `Authorization`   | `Bearer <Axiom API token>` |
+| `X-Axiom-Dataset` | `<Axiom dataset name>`     |
+
+The API token needs permission to ingest data into the dataset.
+
+For more information, see [Axiom's OpenTelemetry documentation](https://axiom.co/docs/send-data/opentelemetry).
 
 ### Honeycomb
 
